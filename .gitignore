@@ -1,6 +1,7 @@
 bin/*
 build/*
 *.pro.user
+Makefile
 
 include/ui_mainwindow.h
 src/qrc_resources.cpp
