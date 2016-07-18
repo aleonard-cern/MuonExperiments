@@ -9,20 +9,23 @@ QT       += core gui printsupport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = MuonExperiments
+DESTDIR = .bin
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    qcustomplot.cpp
+SOURCES += src/main.cpp\
+        src/mainwindow.cpp \
+    src/qcustomplot.cpp
 
-HEADERS  += mainwindow.h \
-    qcustomplot.h
+INCLUDEPATH += include
 
-FORMS    += mainwindow.ui
+HEADERS  += include/mainwindow.h \
+    include/qcustomplot.h
+
+FORMS    += ui/mainwindow.ui
 
 RESOURCES += \
-    resources.qrc
+    data/resources.qrc
 
 QMAKE_CXXFLAGS += -std=c++0x
 

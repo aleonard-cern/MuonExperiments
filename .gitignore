@@ -1,4 +1,12 @@
+bin/*
+build/*
 *.pro.user
+
+include/ui_mainwindow.h
+src/qrc_resources.cpp
+src/moc_mainwindow.cpp
+src/moc_qcustomplot.cpp
+
 CAENUSBdrvB-1.5.1/.tmp*
 CAENUSBdrvB-1.5.1/.CAENUSBdrvB.ko.cmd
 CAENUSBdrvB-1.5.1/.CAENUSBdrvB.mod.o.cmd
