@@ -18,5 +18,5 @@
 ..1. qmake MuonExperiments.pro
 ..2. make
 4. Execute the programme
-..1. ./MuonExperiments
+..1. ./bin/MuonExperiments or from a double-click on the icon
 
