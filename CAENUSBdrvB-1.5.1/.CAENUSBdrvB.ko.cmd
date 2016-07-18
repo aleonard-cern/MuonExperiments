@@ -1,1 +1,0 @@
-cmd_/home/aleonard/Downloads/CAENUSBdrvB-1.5.1/CAENUSBdrvB.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/aleonard/Downloads/CAENUSBdrvB-1.5.1/CAENUSBdrvB.ko /home/aleonard/Downloads/CAENUSBdrvB-1.5.1/CAENUSBdrvB.o /home/aleonard/Downloads/CAENUSBdrvB-1.5.1/CAENUSBdrvB.mod.o
