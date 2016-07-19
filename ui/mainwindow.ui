@@ -45,7 +45,7 @@
         <x>630</x>
         <y>0</y>
         <width>20</width>
-        <height>821</height>
+        <height>681</height>
        </rect>
       </property>
       <property name="orientation">
@@ -55,8 +55,8 @@
      <widget class="QLabel" name="label_channel_1_over_voltage_led">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>440</y>
+        <x>430</x>
+        <y>380</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -74,21 +74,21 @@
      <widget class="QLabel" name="label_channel_3_current">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>770</y>
+        <x>155</x>
+        <y>650</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Current (µA):</string>
+       <string>Curr. (µA):</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_3_maxi">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>730</y>
+        <x>230</x>
+        <y>610</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -100,8 +100,8 @@
      <widget class="QLabel" name="label_channel_2_maxv_led">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>440</y>
+        <x>860</x>
+        <y>380</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -119,34 +119,34 @@
      <widget class="QLabel" name="label_channel_3_over_power">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>670</y>
+        <x>230</x>
+        <y>550</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Power</string>
+       <string>Over Pow.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_2_over_voltage">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>440</y>
+        <x>770</x>
+        <y>380</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Voltage</string>
+       <string>Over Volt.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_4_disabled">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>640</y>
+        <x>350</x>
+        <y>520</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -158,21 +158,21 @@
      <widget class="QLabel" name="label_channel_3_over_current">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>670</y>
+        <x>120</x>
+        <y>550</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Current</string>
+       <string>Over Curr.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_2_disabled_led">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>380</y>
+        <x>650</x>
+        <y>320</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -190,8 +190,8 @@
      <widget class="QLabel" name="label_channel_3_over_power_led">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>670</y>
+        <x>210</x>
+        <y>550</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -209,8 +209,8 @@
      <widget class="QLCDNumber" name="lcdNumber_channel_2_voltage">
       <property name="geometry">
        <rect>
-        <x>930</x>
-        <y>500</y>
+        <x>705</x>
+        <y>440</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -225,8 +225,8 @@
      <widget class="QLabel" name="label_channel_4_ramp_up_led">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>700</y>
+        <x>330</x>
+        <y>580</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -244,8 +244,8 @@
      <widget class="QLabel" name="label_channel_5_disabled_led">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>640</y>
+        <x>650</x>
+        <y>520</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -263,8 +263,8 @@
      <widget class="QLabel" name="label_channel_4_ramp_up">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>700</y>
+        <x>350</x>
+        <y>580</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -276,21 +276,21 @@
      <widget class="QLabel" name="label_channel_2_ramp_down">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>470</y>
+        <x>670</x>
+        <y>410</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Ramp Down</string>
+       <string>Ramp Do</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_3_state_led">
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>610</y>
+        <y>495</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -308,8 +308,8 @@
      <widget class="QLabel" name="label_channel_5_maxv">
       <property name="geometry">
        <rect>
-        <x>1140</x>
-        <y>700</y>
+        <x>890</x>
+        <y>580</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -321,8 +321,8 @@
      <widget class="QLabel" name="label_channel_2_state_led">
       <property name="geometry">
        <rect>
-        <x>1020</x>
-        <y>350</y>
+        <x>840</x>
+        <y>295</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -340,8 +340,8 @@
      <widget class="QLabel" name="label_channel_4_over_current_led">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>670</y>
+        <x>430</x>
+        <y>550</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -359,8 +359,8 @@
      <widget class="QLabel" name="label_channel_5_ramp_down_led">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>730</y>
+        <x>650</x>
+        <y>610</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -378,8 +378,8 @@
      <widget class="QLabel" name="label_channel_5">
       <property name="geometry">
        <rect>
-        <x>520</x>
-        <y>610</y>
+        <x>430</x>
+        <y>495</y>
         <width>71</width>
         <height>17</height>
        </rect>
@@ -391,8 +391,8 @@
      <widget class="QLabel" name="label_channel_2_ramp_down_led">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>470</y>
+        <x>650</x>
+        <y>410</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -410,8 +410,8 @@
      <widget class="QLabel" name="label_channel_3_disabled_led">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>640</y>
+        <x>10</x>
+        <y>520</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -429,8 +429,8 @@
      <widget class="QLabel" name="label_channel_4_interlock">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>640</y>
+        <x>450</x>
+        <y>520</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -442,8 +442,8 @@
      <widget class="QLabel" name="label_channel_5_maxi_led">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>730</y>
+        <x>860</x>
+        <y>610</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -461,8 +461,8 @@
      <widget class="QLabel" name="label_channel_2_over_current_led">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>410</y>
+        <x>750</x>
+        <y>350</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -480,21 +480,21 @@
      <widget class="QLabel" name="label_channel_5_voltage">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>770</y>
+        <x>645</x>
+        <y>650</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Voltage (V):</string>
+       <string>Volt. (V):</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_5_over_power_led">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>670</y>
+        <x>860</x>
+        <y>550</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -512,8 +512,8 @@
      <widget class="QLabel" name="label_channel_3_trip_led">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>640</y>
+        <x>210</x>
+        <y>520</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -531,8 +531,8 @@
      <widget class="QLabel" name="label_channel_5_interlock_led">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>640</y>
+        <x>750</x>
+        <y>520</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -550,8 +550,8 @@
      <widget class="QLabel" name="label_channel_1_maxv_led">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>440</y>
+        <x>540</x>
+        <y>380</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -569,8 +569,8 @@
      <widget class="QLabel" name="label_channel_2_polarity">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>410</y>
+        <x>670</x>
+        <y>350</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -582,8 +582,8 @@
      <widget class="QLabel" name="label_channel_5_polarity">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>670</y>
+        <x>670</x>
+        <y>550</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -595,8 +595,8 @@
      <widget class="QLabel" name="label_channel_5_trip_led">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>640</y>
+        <x>860</x>
+        <y>520</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -614,8 +614,8 @@
      <widget class="QLabel" name="label_channel_1_polarity_led">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>410</y>
+        <x>330</x>
+        <y>350</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -633,21 +633,21 @@
      <widget class="QLabel" name="label_channel_3_ramp_down">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>730</y>
+        <x>30</x>
+        <y>610</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Ramp Down</string>
+       <string>Ramp Do</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_3_maxv_led">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>700</y>
+        <x>210</x>
+        <y>580</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -665,21 +665,21 @@
      <widget class="QLabel" name="label_channel_5_ramp_down">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>730</y>
+        <x>670</x>
+        <y>610</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Ramp Down</string>
+       <string>Ramp Do</string>
       </property>
      </widget>
      <widget class="QLCDNumber" name="lcdNumber_channel_2_current">
       <property name="geometry">
        <rect>
-        <x>1130</x>
-        <y>500</y>
+        <x>865</x>
+        <y>440</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -694,21 +694,21 @@
      <widget class="QLabel" name="label_channel_4_ramp_down">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>730</y>
+        <x>350</x>
+        <y>610</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Ramp Down</string>
+       <string>Ramp Do</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_1_over_current_led">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>410</y>
+        <x>430</x>
+        <y>350</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -726,8 +726,8 @@
      <widget class="QLabel" name="label_channel_5_ramp_up">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>700</y>
+        <x>670</x>
+        <y>580</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -739,21 +739,21 @@
      <widget class="QLabel" name="label_channel_5_over_voltage">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>700</y>
+        <x>770</x>
+        <y>580</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Voltage</string>
+       <string>Over Volt.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_2_ramp_up">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>440</y>
+        <x>670</x>
+        <y>380</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -765,8 +765,8 @@
      <widget class="QLabel" name="label_channel_1_ramp_up">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>440</y>
+        <x>350</x>
+        <y>380</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -778,8 +778,8 @@
      <widget class="QLabel" name="label_channel_3_trip">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>640</y>
+        <x>230</x>
+        <y>520</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -791,21 +791,21 @@
      <widget class="QLabel" name="label_channel_1_over_power">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>410</y>
+        <x>560</x>
+        <y>350</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Power</string>
+       <string>Over Pow.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_4_polarity_led">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>670</y>
+        <x>330</x>
+        <y>550</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -823,8 +823,8 @@
      <widget class="QLabel" name="label_channel_5_ramp_up_led">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>700</y>
+        <x>650</x>
+        <y>580</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -842,8 +842,8 @@
      <widget class="QLabel" name="label_channel_3_ramp_up_led">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>700</y>
+        <x>10</x>
+        <y>580</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -861,8 +861,8 @@
      <widget class="QLabel" name="label_channel_3_disabled">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>640</y>
+        <x>30</x>
+        <y>520</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -874,8 +874,8 @@
      <widget class="QLabel" name="label_channel_1_state_led">
       <property name="geometry">
        <rect>
-        <x>610</x>
-        <y>350</y>
+        <x>520</x>
+        <y>295</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -893,8 +893,8 @@
      <widget class="QLabel" name="label_channel_4_ramp_down_led">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>730</y>
+        <x>330</x>
+        <y>610</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -912,21 +912,21 @@
      <widget class="QLabel" name="label_channel_2_over_current">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>410</y>
+        <x>770</x>
+        <y>350</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Current</string>
+       <string>Over Curr.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_4_over_power_led">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>670</y>
+        <x>540</x>
+        <y>550</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -944,8 +944,8 @@
      <widget class="QLabel" name="label_channel_1">
       <property name="geometry">
        <rect>
-        <x>520</x>
-        <y>350</y>
+        <x>430</x>
+        <y>295</y>
         <width>71</width>
         <height>17</height>
        </rect>
@@ -957,21 +957,21 @@
      <widget class="QLabel" name="label_channel_4_over_current">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>670</y>
+        <x>450</x>
+        <y>550</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Current</string>
+       <string>Over Curr.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_4_over_voltage_led">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>700</y>
+        <x>430</x>
+        <y>580</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -989,8 +989,8 @@
      <widget class="QLCDNumber" name="lcdNumber_channel_3_current">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>760</y>
+        <x>225</x>
+        <y>640</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -1005,8 +1005,8 @@
      <widget class="QLabel" name="label_channel_1_interlock">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>380</y>
+        <x>450</x>
+        <y>320</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1018,21 +1018,21 @@
      <widget class="QLabel" name="label_channel_1_over_current">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>410</y>
+        <x>450</x>
+        <y>350</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Current</string>
+       <string>Over Curr.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_1_polarity">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>410</y>
+        <x>350</x>
+        <y>350</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1044,8 +1044,8 @@
      <widget class="QLabel" name="label_channel_4_polarity">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>670</y>
+        <x>350</x>
+        <y>550</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1057,8 +1057,8 @@
      <widget class="QLabel" name="label_channel_5_over_current_led">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>670</y>
+        <x>750</x>
+        <y>550</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1076,8 +1076,8 @@
      <widget class="QLCDNumber" name="lcdNumber_channel_1_voltage">
       <property name="geometry">
        <rect>
-        <x>520</x>
-        <y>500</y>
+        <x>385</x>
+        <y>440</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -1092,8 +1092,8 @@
      <widget class="QLabel" name="label_channel_5_over_voltage_led">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>700</y>
+        <x>750</x>
+        <y>580</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1111,8 +1111,8 @@
      <widget class="QLabel" name="label_channel_6">
       <property name="geometry">
        <rect>
-        <x>930</x>
-        <y>610</y>
+        <x>750</x>
+        <y>495</y>
         <width>71</width>
         <height>17</height>
        </rect>
@@ -1124,8 +1124,8 @@
      <widget class="QLabel" name="label_channel_4_state_led">
       <property name="geometry">
        <rect>
-        <x>610</x>
-        <y>610</y>
+        <x>520</x>
+        <y>495</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1143,8 +1143,8 @@
      <widget class="QLabel" name="label_channel_2_under_voltage_led">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>470</y>
+        <x>750</x>
+        <y>410</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1162,8 +1162,8 @@
      <widget class="QLabel" name="label_channel_1_disabled_led">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>380</y>
+        <x>330</x>
+        <y>320</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1181,8 +1181,8 @@
      <widget class="QLabel" name="label_channel_2_polarity_led">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>410</y>
+        <x>650</x>
+        <y>350</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1200,34 +1200,34 @@
      <widget class="QLabel" name="label_channel_3_under_voltage">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>730</y>
+        <x>120</x>
+        <y>610</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Under Voltage</string>
+       <string>Under Volt.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_1_under_voltage">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>470</y>
+        <x>450</x>
+        <y>410</y>
         <width>101</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Under Voltage</string>
+       <string>Under Volt.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_1_interlock_led">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>380</y>
+        <x>430</x>
+        <y>320</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1245,8 +1245,8 @@
      <widget class="QLabel" name="label_channel_2">
       <property name="geometry">
        <rect>
-        <x>930</x>
-        <y>350</y>
+        <x>750</x>
+        <y>295</y>
         <width>71</width>
         <height>17</height>
        </rect>
@@ -1259,7 +1259,7 @@
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>610</y>
+        <y>495</y>
         <width>71</width>
         <height>17</height>
        </rect>
@@ -1271,21 +1271,21 @@
      <widget class="QLabel" name="label_channel_4_under_voltage">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>730</y>
+        <x>450</x>
+        <y>610</y>
         <width>101</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Under Voltage</string>
+       <string>Under Volt.</string>
       </property>
      </widget>
      <widget class="QLCDNumber" name="lcdNumber_channel_5_voltage">
       <property name="geometry">
        <rect>
-        <x>930</x>
-        <y>760</y>
+        <x>705</x>
+        <y>640</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -1300,8 +1300,8 @@
      <widget class="QLabel" name="label_channel_1_trip_led">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>380</y>
+        <x>540</x>
+        <y>320</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1319,34 +1319,34 @@
      <widget class="QLabel" name="label_channel_5_under_voltage">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>730</y>
+        <x>770</x>
+        <y>610</y>
         <width>101</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Under Voltage</string>
+       <string>Under Volt.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_5_over_current">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>670</y>
+        <x>770</x>
+        <y>550</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Current</string>
+       <string>Over Curr.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_5_state_led">
       <property name="geometry">
        <rect>
-        <x>1020</x>
-        <y>610</y>
+        <x>840</x>
+        <y>495</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1364,8 +1364,8 @@
      <widget class="QLabel" name="label_channel_3_over_current_led">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>670</y>
+        <x>100</x>
+        <y>550</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1383,8 +1383,8 @@
      <widget class="QLabel" name="label_channel_5_disabled">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>640</y>
+        <x>670</x>
+        <y>520</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1396,8 +1396,8 @@
      <widget class="QLabel" name="label_channel_4_interlock_led">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>640</y>
+        <x>430</x>
+        <y>520</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1415,8 +1415,8 @@
      <widget class="QLabel" name="label_channel_2_over_voltage_led">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>440</y>
+        <x>750</x>
+        <y>380</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1434,8 +1434,8 @@
      <widget class="QLabel" name="label_channel_1_under_voltage_led">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>470</y>
+        <x>430</x>
+        <y>410</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1453,21 +1453,21 @@
      <widget class="QLabel" name="label_channel_3_voltage">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>770</y>
+        <x>5</x>
+        <y>650</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Voltage (V):</string>
+       <string>Volt. (V):</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_3_interlock_led">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>640</y>
+        <x>100</x>
+        <y>520</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1485,21 +1485,21 @@
      <widget class="QLabel" name="label_channel_5_over_power">
       <property name="geometry">
        <rect>
-        <x>1140</x>
-        <y>670</y>
+        <x>890</x>
+        <y>550</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Power</string>
+       <string>Over Pow.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_1_maxv">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>440</y>
+        <x>560</x>
+        <y>380</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1511,8 +1511,8 @@
      <widget class="QLabel" name="label_channel_2_over_power_led">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>410</y>
+        <x>860</x>
+        <y>350</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1530,8 +1530,8 @@
      <widget class="QLabel" name="label_channel_4_maxv_led">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>700</y>
+        <x>540</x>
+        <y>580</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1549,21 +1549,21 @@
      <widget class="QLabel" name="label_channel_1_ramp_down">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>470</y>
+        <x>350</x>
+        <y>410</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Ramp Down</string>
+       <string>Ramp Do</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_4_trip">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>640</y>
+        <x>560</x>
+        <y>520</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1575,8 +1575,8 @@
      <widget class="QLabel" name="label_channel_5_trip">
       <property name="geometry">
        <rect>
-        <x>1140</x>
-        <y>640</y>
+        <x>890</x>
+        <y>520</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1588,8 +1588,8 @@
      <widget class="QLabel" name="label_channel_1_trip">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>380</y>
+        <x>560</x>
+        <y>320</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1601,8 +1601,8 @@
      <widget class="QLabel" name="label_channel_4_maxi">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>730</y>
+        <x>560</x>
+        <y>610</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1614,21 +1614,21 @@
      <widget class="QLabel" name="label_channel_1_voltage">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>510</y>
+        <x>325</x>
+        <y>450</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Voltage (V):</string>
+       <string>Volt. (V):</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_5_under_voltage_led">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>730</y>
+        <x>750</x>
+        <y>610</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1646,8 +1646,8 @@
      <widget class="QLabel" name="label_channel_2_disabled">
       <property name="geometry">
        <rect>
-        <x>870</x>
-        <y>380</y>
+        <x>670</x>
+        <y>320</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1659,8 +1659,8 @@
      <widget class="QLabel" name="label_channel_5_maxi">
       <property name="geometry">
        <rect>
-        <x>1140</x>
-        <y>730</y>
+        <x>890</x>
+        <y>610</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1672,8 +1672,8 @@
      <widget class="QLabel" name="label_channel_5_interlock">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>640</y>
+        <x>770</x>
+        <y>520</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1685,8 +1685,8 @@
      <widget class="QLabel" name="label_channel_2_maxv">
       <property name="geometry">
        <rect>
-        <x>1140</x>
-        <y>440</y>
+        <x>880</x>
+        <y>380</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1698,8 +1698,8 @@
      <widget class="QLCDNumber" name="lcdNumber_channel_4_voltage">
       <property name="geometry">
        <rect>
-        <x>520</x>
-        <y>760</y>
+        <x>385</x>
+        <y>640</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -1714,8 +1714,8 @@
      <widget class="QLabel" name="label_channel_2_maxi_led">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>470</y>
+        <x>860</x>
+        <y>410</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1733,21 +1733,21 @@
      <widget class="QLabel" name="label_channel_4_current">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>770</y>
+        <x>475</x>
+        <y>650</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Current (µA):</string>
+       <string>Curr. (µA):</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_1_disabled">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>380</y>
+        <x>350</x>
+        <y>320</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1759,8 +1759,8 @@
      <widget class="QLabel" name="label_channel_4_maxv">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>700</y>
+        <x>560</x>
+        <y>580</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1772,8 +1772,8 @@
      <widget class="QLCDNumber" name="lcdNumber_channel_4_current">
       <property name="geometry">
        <rect>
-        <x>720</x>
-        <y>760</y>
+        <x>545</x>
+        <y>640</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -1788,21 +1788,21 @@
      <widget class="QLabel" name="label_channel_2_current">
       <property name="geometry">
        <rect>
-        <x>1030</x>
-        <y>510</y>
+        <x>795</x>
+        <y>450</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Current (µA):</string>
+       <string>Curr. (µA):</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_1_ramp_down_led">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>470</y>
+        <x>330</x>
+        <y>410</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1820,34 +1820,34 @@
      <widget class="QLabel" name="label_channel_4_over_power">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>670</y>
+        <x>560</x>
+        <y>550</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Power</string>
+       <string>Over Pow.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_4_over_voltage">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>700</y>
+        <x>450</x>
+        <y>580</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Voltage</string>
+       <string>Over Volt.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_3_polarity">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>670</y>
+        <x>30</x>
+        <y>550</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1859,8 +1859,8 @@
      <widget class="QLabel" name="label_channel_2_maxi">
       <property name="geometry">
        <rect>
-        <x>1140</x>
-        <y>470</y>
+        <x>880</x>
+        <y>410</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1872,8 +1872,8 @@
      <widget class="QLCDNumber" name="lcdNumber_channel_3_voltage">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>760</y>
+        <x>65</x>
+        <y>640</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -1888,21 +1888,21 @@
      <widget class="QLabel" name="label_channel_1_over_voltage">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>440</y>
+        <x>450</x>
+        <y>380</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Voltage</string>
+       <string>Over Volt.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_1_maxi">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>470</y>
+        <x>560</x>
+        <y>410</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1914,8 +1914,8 @@
      <widget class="QLabel" name="label_channel_2_interlock_led">
       <property name="geometry">
        <rect>
-        <x>970</x>
-        <y>380</y>
+        <x>750</x>
+        <y>320</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -1933,8 +1933,8 @@
      <widget class="QLabel" name="label_channel_3_interlock">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>640</y>
+        <x>120</x>
+        <y>520</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -1946,8 +1946,8 @@
      <widget class="QLCDNumber" name="lcdNumber_channel_1_current">
       <property name="geometry">
        <rect>
-        <x>720</x>
-        <y>500</y>
+        <x>545</x>
+        <y>440</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -1962,34 +1962,34 @@
      <widget class="QLabel" name="label_channel_5_current">
       <property name="geometry">
        <rect>
-        <x>1030</x>
-        <y>770</y>
+        <x>795</x>
+        <y>650</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Current (µA):</string>
+       <string>Curr. (µA):</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_2_voltage">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>510</y>
+        <x>645</x>
+        <y>450</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Voltage (V):</string>
+       <string>Volt. (V):</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_4_trip_led">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>640</y>
+        <x>540</x>
+        <y>520</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2007,8 +2007,8 @@
      <widget class="QLabel" name="label_channel_3_maxv">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>700</y>
+        <x>230</x>
+        <y>580</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -2020,34 +2020,34 @@
      <widget class="QLabel" name="label_channel_1_current">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>510</y>
+        <x>475</x>
+        <y>450</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Current (µA):</string>
+       <string>Curr. (µA):</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_2_over_power">
       <property name="geometry">
        <rect>
-        <x>1140</x>
-        <y>410</y>
+        <x>880</x>
+        <y>350</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Power</string>
+       <string>Over Pow.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_3_over_voltage_led">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>700</y>
+        <x>100</x>
+        <y>580</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2065,14 +2065,14 @@
      <widget class="QLabel" name="label_channel_4_voltage">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>770</y>
+        <x>325</x>
+        <y>650</y>
         <width>81</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Voltage (V):</string>
+       <string>Volt. (V):</string>
       </property>
      </widget>
      <widget class="Line" name="line_3">
@@ -2081,7 +2081,7 @@
         <x>310</x>
         <y>0</y>
         <width>20</width>
-        <height>821</height>
+        <height>681</height>
        </rect>
       </property>
       <property name="orientation">
@@ -2091,8 +2091,8 @@
      <widget class="QLabel" name="label_channel_1_over_power_led">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>410</y>
+        <x>540</x>
+        <y>350</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2110,8 +2110,8 @@
      <widget class="QLabel" name="label_channel_2_ramp_up_led">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>440</y>
+        <x>650</x>
+        <y>380</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2129,8 +2129,8 @@
      <widget class="QLabel" name="label_channel_2_trip">
       <property name="geometry">
        <rect>
-        <x>1140</x>
-        <y>380</y>
+        <x>880</x>
+        <y>320</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -2142,8 +2142,8 @@
      <widget class="QLabel" name="label_channel_4_under_voltage_led">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>730</y>
+        <x>430</x>
+        <y>610</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2161,8 +2161,8 @@
      <widget class="QLabel" name="label_channel_3_ramp_down_led">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>730</y>
+        <x>10</x>
+        <y>610</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2180,8 +2180,8 @@
      <widget class="QLCDNumber" name="lcdNumber_channel_5_current">
       <property name="geometry">
        <rect>
-        <x>1130</x>
-        <y>760</y>
+        <x>865</x>
+        <y>640</y>
         <width>90</width>
         <height>30</height>
        </rect>
@@ -2196,8 +2196,8 @@
      <widget class="QLabel" name="label_channel_5_maxv_led">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>700</y>
+        <x>860</x>
+        <y>580</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2215,8 +2215,8 @@
      <widget class="QLabel" name="label_channel_3_maxi_led">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>730</y>
+        <x>210</x>
+        <y>610</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2234,8 +2234,8 @@
      <widget class="QLabel" name="label_channel_3_polarity_led">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>670</y>
+        <x>10</x>
+        <y>550</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2253,8 +2253,8 @@
      <widget class="QLabel" name="label_channel_1_maxi_led">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>470</y>
+        <x>540</x>
+        <y>410</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2272,8 +2272,8 @@
      <widget class="QLabel" name="label_channel_2_interlock">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>380</y>
+        <x>770</x>
+        <y>320</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -2285,8 +2285,8 @@
      <widget class="QLabel" name="label_channel_4_disabled_led">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>640</y>
+        <x>330</x>
+        <y>520</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2304,8 +2304,8 @@
      <widget class="QLabel" name="label_channel_2_trip_led">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>380</y>
+        <x>860</x>
+        <y>320</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2323,8 +2323,8 @@
      <widget class="QLabel" name="label_channel_3_ramp_up">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>700</y>
+        <x>30</x>
+        <y>580</y>
         <width>67</width>
         <height>17</height>
        </rect>
@@ -2336,8 +2336,8 @@
      <widget class="QLabel" name="label_channel_5_polarity_led">
       <property name="geometry">
        <rect>
-        <x>840</x>
-        <y>670</y>
+        <x>650</x>
+        <y>550</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2355,8 +2355,8 @@
      <widget class="QLabel" name="label_channel_1_ramp_up_led">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>440</y>
+        <x>330</x>
+        <y>380</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2374,21 +2374,21 @@
      <widget class="QLabel" name="label_channel_3_over_voltage">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>700</y>
+        <x>120</x>
+        <y>580</y>
         <width>91</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Over Voltage</string>
+       <string>Over Volt.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_3_under_voltage_led">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>730</y>
+        <x>100</x>
+        <y>610</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2406,21 +2406,21 @@
      <widget class="QLabel" name="label_channel_2_under_voltage">
       <property name="geometry">
        <rect>
-        <x>1000</x>
-        <y>470</y>
+        <x>770</x>
+        <y>410</y>
         <width>101</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Under Voltage</string>
+       <string>Under Volt.</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_channel_4_maxi_led">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>730</y>
+        <x>540</x>
+        <y>610</y>
         <width>16</width>
         <height>16</height>
        </rect>
@@ -2439,9 +2439,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>290</y>
-        <width>1221</width>
-        <height>5</height>
+        <y>285</y>
+        <width>971</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="orientation">
@@ -2452,9 +2452,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>490</y>
-        <width>1221</width>
-        <height>5</height>
+        <y>480</y>
+        <width>971</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="orientation">
@@ -2809,7 +2809,7 @@
       <widget class="QLabel" name="label_channel_0_trip">
        <property name="geometry">
         <rect>
-         <x>230</x>
+         <x>240</x>
          <y>30</y>
          <width>67</width>
          <height>17</height>
@@ -2848,7 +2848,7 @@
       <widget class="QLabel" name="label_channel_0_maxi">
        <property name="geometry">
         <rect>
-         <x>230</x>
+         <x>240</x>
          <y>120</y>
          <width>67</width>
          <height>17</height>
@@ -2880,7 +2880,7 @@
       <widget class="QLabel" name="label_channel_0_maxv_led">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>220</x>
          <y>90</y>
          <width>16</width>
          <height>16</height>
@@ -2899,7 +2899,7 @@
       <widget class="QLabel" name="label_channel_0_under_voltage">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>130</x>
          <y>120</y>
          <width>91</width>
          <height>17</height>
@@ -2928,7 +2928,7 @@
       <widget class="QLabel" name="label_channel_0_over_voltage_led">
        <property name="geometry">
         <rect>
-         <x>100</x>
+         <x>110</x>
          <y>90</y>
          <width>16</width>
          <height>16</height>
@@ -2947,7 +2947,7 @@
       <widget class="QLabel" name="label_channel_0_over_current">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>130</x>
          <y>60</y>
          <width>91</width>
          <height>17</height>
@@ -2979,7 +2979,7 @@
       <widget class="QLabel" name="label_channel_0_maxi_led">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>220</x>
          <y>120</y>
          <width>16</width>
          <height>16</height>
@@ -3052,7 +3052,7 @@
       <widget class="QLabel" name="label_channel_0_over_power_led">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>220</x>
          <y>60</y>
          <width>16</width>
          <height>16</height>
@@ -3071,7 +3071,7 @@
       <widget class="QLabel" name="label_channel_0_interlock">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>130</x>
          <y>30</y>
          <width>67</width>
          <height>17</height>
@@ -3084,7 +3084,7 @@
       <widget class="QLabel" name="label_channel_0_interlock_led">
        <property name="geometry">
         <rect>
-         <x>100</x>
+         <x>110</x>
          <y>30</y>
          <width>16</width>
          <height>16</height>
@@ -3103,7 +3103,7 @@
       <widget class="QLabel" name="label_channel_0_maxv">
        <property name="geometry">
         <rect>
-         <x>230</x>
+         <x>240</x>
          <y>90</y>
          <width>67</width>
          <height>17</height>
@@ -3116,7 +3116,7 @@
       <widget class="QLabel" name="label_channel_0_over_power">
        <property name="geometry">
         <rect>
-         <x>230</x>
+         <x>240</x>
          <y>60</y>
          <width>81</width>
          <height>17</height>
@@ -3129,7 +3129,7 @@
       <widget class="QLabel" name="label_channel_0_trip_led">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>220</x>
          <y>30</y>
          <width>16</width>
          <height>16</height>
@@ -3148,7 +3148,7 @@
       <widget class="QLabel" name="label_channel_0_over_current_led">
        <property name="geometry">
         <rect>
-         <x>100</x>
+         <x>110</x>
          <y>60</y>
          <width>16</width>
          <height>16</height>
@@ -3193,7 +3193,7 @@
       <widget class="QLabel" name="label_channel_0_under_voltage_led">
        <property name="geometry">
         <rect>
-         <x>100</x>
+         <x>110</x>
          <y>120</y>
          <width>16</width>
          <height>16</height>
@@ -3279,7 +3279,7 @@
       <widget class="QLabel" name="label_channel_0_over_voltage">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>130</x>
          <y>90</y>
          <width>91</width>
          <height>17</height>
@@ -3296,10 +3296,10 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>50</y>
-        <width>241</width>
-        <height>171</height>
+        <x>650</x>
+        <y>30</y>
+        <width>301</width>
+        <height>191</height>
        </rect>
       </property>
       <property name="text">
@@ -4131,7 +4131,6 @@
  </customwidgets>
  <resources>
   <include location="../data/resources.qrc"/>
-  <include location="resources.qrc"/>
  </resources>
  <connections/>
 </ui>

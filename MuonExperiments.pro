@@ -41,8 +41,7 @@ HEADERS  += include/mainwindow.h \
 
 FORMS    += ui/mainwindow.ui
 
-RESOURCES += \
-    data/resources.qrc
+RESOURCES += data/resources.qrc
 
 QMAKE_CXXFLAGS += -std=c++0x
 
