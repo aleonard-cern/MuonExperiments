@@ -10,6 +10,18 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = MuonExperiments
 DESTDIR = bin
+targetinstall.path = /usr/local/bin/MuonExperiments
+targetinstall.files = bin/MuonExperiments
+
+INSTALLS += targetinstall
+
+icon.path = /usr/local/MuonExperiments
+icon.files = data/iconMuonExperiments.png
+icon.extra = cp data/MuonExperiments.desktop ~/Desktop/MuonExperiments.desktop
+
+INSTALLS += icon
+
+
 OBJECTS_DIR = build/.obj
 MOC_DIR = build/.moc
 RCC_DIR = build/.rcc
