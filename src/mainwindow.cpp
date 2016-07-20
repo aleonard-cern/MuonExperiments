@@ -249,7 +249,7 @@ void MainWindow::closing() {
 void MainWindow::closeEvent (QCloseEvent *event)
 {
     QMessageBox::StandardButton resBtn = QMessageBox::question( this, this->windowTitle(),
-                                                                tr("Are you sure?\n"),
+                                                                tr("Are you sure you want to exit ?\n"),
                                                                 QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes,
                                                                 QMessageBox::Yes);
     if (resBtn != QMessageBox::Yes) {
@@ -267,8 +267,8 @@ bool MainWindow::readTDCParameters(int baseAddress)
     // reading firmware revision to make sure rotary switch is ok
     CVErrorCodes ret = CAENVME_ReadCycle(handleChef, baseAddressTDC + 0x1026, &value16, cvA32_U_DATA, cvD16);
     if (ret != cvSuccess) {
-        qDebug() << "Please check the rotary switch for the tdc.";
-        QMessageBox::information(this, "Error", "Please check the rotary switch for the tdc");
+        qDebug() << "Please check the rotary switches for the tdc.";
+        QMessageBox::information(this, "Error", "Please check the rotary switches for the tdcs.");
         return false;
     }
     return true;
@@ -344,19 +344,6 @@ void MainWindow::readHV()
     ui->lcdNumber_board_vmax->display(value16);
     CAENVME_ReadCycle(handleChef, baseAddressHV + 0x0054, &value16, cvA32_U_DATA, cvD16);
     ui->lcdNumber_board_imax->display(value16);
-
-    //value16 = 1;
-    //qDebug() << value16;
-    //unsigned int data = 0x0;
-    //CVErrorCodes flag = CAENVME_WriteCycle(handleChef, 0xAA000090, &data, cvA32_U_DATA, cvD16);
-    //if (flag != cvSuccess) qDebug() << "Couldn't write";
-
-    /*
-     * QMessageBox::information(
-        this,
-        tr("Application Name"),
-        tr("Hello") );
-    */
 
 }
 
@@ -482,14 +469,6 @@ void MainWindow::on_pushButton_start_run_clicked()
     QString timeString = time.toString();
     qDebug() << timeString.replace(":", "_");
 
-    QString fileName = "/home/aleonard/Desktop/MuonArchExpData/Muon_Arch_Data_";
-    fileName += dateString;
-    fileName += "_at_";
-    fileName += timeString;
-    fileName += ".txt";
-
-    dataFileName = ui->file_name_lineEdit->text();
-
 
     counter = 0;
     prevTime = time;
@@ -498,6 +477,7 @@ void MainWindow::on_pushButton_start_run_clicked()
     mean_lifetime = 0;
     mean_lifetime_square = 0;
 
+    dataFileName = ui->file_name_lineEdit->text();
     QFile file(dataFileName);
     if (!file.open(QIODevice::ReadWrite | QIODevice::Append)) {
         qDebug() << "Problem opening or creating the file";
@@ -517,14 +497,10 @@ void MainWindow::on_pushButton_start_run_clicked()
 
         uint16_t value16;
         uint32_t value32;
-        uint32_t prevStart = 0;
-        uint32_t currentStop = 0;
         std::vector<uint32_t> differences(100);
         qDebug() << "Reading Output Buffer Register";
         running = true;
         stopRun = false;
-        int nStop = 0;
-
 
         do {
             QCoreApplication::processEvents();
@@ -614,19 +590,6 @@ void MainWindow::on_pushButton_start_run_clicked()
                     }
 
                 }
-
-                /*if (channel == 0) prevStart = (value32 & 0x1FFFFF);
-                else if (channel == 1) {
-                    nStop++;
-                    currentStop = (value32 & 0x1FFFFF);
-                    double difference = (currentStop - prevStart)*0.000025;
-                    differences.push_back(difference);
-                    qDebug() << "event " << QString::number(nStop) << "  " << QString::number(difference);
-                    //if (difference <= tMax && difference >= tMin) (difference);
-                    stream << QString::number(difference) + "\n";
-
-                }*/
-
             }
             usleep(1);
         } while (!stopRun);
@@ -690,8 +653,6 @@ void MainWindow::adjustPlot()
 void MainWindow::updatePlot(double value)
 {
     int index = (value - tMin) * nBins / (tMax - tMin);
-    //qDebug() << QString::number(tMin) << "  " << QString::number(tMax) << "  " << QString::number(nBins);
-    //qDebug() << QString::number(value) << "  index: " << QString::number(index);
     if (index >= nBins || index < 0) return;
 
     y[index]++;
@@ -746,7 +707,6 @@ void MainWindow::waitForWriteOK()
     do {
         CAENVME_ReadCycle(handleChef, baseAddressTDC + 0x1030, &value16, cvA32_U_DATA, cvD16);
         WRITE_OK = ((value16 >> 0) & 0x1);
-        //std::cout << "Write ok ? " << WRITE_OK << "  Read ok ? " << READ_OK << std::endl;
         usleep(10);
     } while (!WRITE_OK);
     return;
@@ -761,7 +721,6 @@ void MainWindow::waitForReadOK()
     do {
         CAENVME_ReadCycle(handleChef, baseAddressTDC + 0x1030, &value16, cvA32_U_DATA, cvD16);
         READ_OK = ((value16 >> 1) & 0x1);
-        //std::cout << "Write ok ? " << WRITE_OK << "  Read ok ? " << READ_OK << std::endl;
         usleep(10);
     } while (!READ_OK);
     return;
@@ -925,6 +884,8 @@ void MainWindow::on_log_pushButton_clicked()
 
 void MainWindow::on_file_name_pushButton_clicked()
 {
-    ui->file_name_lineEdit->setText(QFileDialog::getSaveFileName(this, tr("Save File"),
-                               "/home/aleonard/"));
+	 dataFileName = ui->file_name_lineEdit->text();
+	 QString newDataFileName =   QFileDialog::getSaveFileName(this, tr("Save File"),
+                                QStandardPaths::displayName(QStandardPaths::DocumentsLocation));
+	 ui->file_name_lineEdit->setText(newDataFileName == "" ? dataFileName : newDataFileName);
 }
