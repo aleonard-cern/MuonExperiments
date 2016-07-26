@@ -40,12 +40,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QString timeString = time.toString();
     qDebug() << timeString.replace(":", "_");
 
-    QString fileNameTmp = QStandardPaths::displayName(QStandardPaths::DocumentsLocation);
-    fileNameTmp += "/Muon_Data_";
+	 QString fileNameTmp = QStandardPaths::locate(QStandardPaths::DocumentsLocation, QString(), QStandardPaths::LocateDirectory);
+    fileNameTmp += "Muon_Data_";
     fileNameTmp += dateString;
     fileNameTmp += "_at_";
     fileNameTmp += timeString;
     fileNameTmp += ".txt";
+	 qDebug() << "This is the location: ";
+	 qDebug() << fileNameTmp;
     ui->file_name_lineEdit->setText(fileNameTmp);
 
     qDebug() << "Reading setting mode";
@@ -448,6 +450,7 @@ void MainWindow::on_pushButton_start_run_clicked()
     if (running) return;
 
     if (!readTDCParameters(ui->spinBox_rotary_switches_tdc->value())) {
+		  qDebug() << "Could not read TDC parameter";
         return;
     }
 
@@ -459,6 +462,9 @@ void MainWindow::on_pushButton_start_run_clicked()
 
         return;
     }
+	 else {
+		  readTDCSetting();
+	 }
 
     //get current date
     QDate date = QDate::currentDate();
@@ -480,7 +486,8 @@ void MainWindow::on_pushButton_start_run_clicked()
     dataFileName = ui->file_name_lineEdit->text();
     QFile file(dataFileName);
     if (!file.open(QIODevice::ReadWrite | QIODevice::Append)) {
-        qDebug() << "Problem opening or creating the file";
+        qDebug() << "Problem opening or creating the file:";
+		  qDebug() << dataFileName;
     }
     else {
         QTextStream stream(&file);
@@ -886,6 +893,7 @@ void MainWindow::on_file_name_pushButton_clicked()
 {
 	 dataFileName = ui->file_name_lineEdit->text();
 	 QString newDataFileName =   QFileDialog::getSaveFileName(this, tr("Save File"),
-                                QStandardPaths::displayName(QStandardPaths::DocumentsLocation));
+                                QStandardPaths::locate(QStandardPaths::DocumentsLocation, QString(), QStandardPaths::LocateDirectory)
+                                );
 	 ui->file_name_lineEdit->setText(newDataFileName == "" ? dataFileName : newDataFileName);
 }
