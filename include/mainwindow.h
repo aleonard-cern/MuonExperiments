@@ -67,6 +67,12 @@ private slots:
 
     void on_file_name_pushButton_clicked();
 
+    void on_pulse_pushButton_clicked();
+
+    void on_read_scalaer_value_pushButton_clicked();
+
+    void on_reset_scaler_pushButton_clicked();
+
 private:
     bool isLog;
     Ui::MainWindow *ui;
@@ -74,7 +80,7 @@ private:
     int32_t handleChef;
     uint32_t baseAddressHV;
     uint32_t baseAddressTDC;
-    uint32_t baseAddressScalar;
+    uint32_t baseAddressScaler;
     bool HVenabled;
 
     std::vector<double> bins;
@@ -122,6 +128,7 @@ private:
     void waitForWriteOK();
     bool setTriggerMode();
     void readTDCSetting();
+    void setPulserMode();
 
     bool tdcTriggerSettingIsGood;
     QString dataFileName;

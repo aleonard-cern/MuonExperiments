@@ -31,6 +31,11 @@ MainWindow::MainWindow(QWidget *parent) :
     readBoardParameters(ui->spinBox_rotary_switches->value());
 
     readTDCParameters(ui->spinBox_rotary_switches_tdc->value());
+
+    setPulserMode();
+
+
+
     //get current date
     QDate date = QDate::currentDate();
     QString dateString = date.toString();
@@ -275,6 +280,13 @@ bool MainWindow::readTDCParameters(int baseAddress)
     }
     return true;
 
+}
+
+
+void MainWindow::setPulserMode()
+{
+    CAENVME_SetPulserConf(handleChef, cvPulserA, 101, 100, cvUnit104ms, 1, cvManualSW, cvManualSW);
+    CAENVME_SetOutputConf(handleChef, cvOutput0, cvInverted, cvActiveLow, cvMiscSignals);
 }
 
 void MainWindow::readBoardParameters(int baseAddress)
@@ -541,15 +553,18 @@ void MainWindow::on_pushButton_start_run_clicked()
                             int channel = ((value32 >> 21) & 0x1F);
                             int tdcTime = (value32 & 0x1FFFFF) * 25;
                             output += QString::number(channel) + " " + QString::number(tdcTime) + "\n";
-                            //qDebug() << output;
                             if (channel == tdcStartCh || channel == tdcStopCh) {
                                 tdcTimes[channel] = tdcTime;
                                 nChannel++;
                             }
                         }
                         if (nChannel == 2) {// 2 for arch exp)
+                            qDebug() << output;
                             output += "\n";
                             double difference = (tdcTimes[tdcStopCh] - tdcTimes[tdcStartCh])/1000.0;
+									 if (difference < 0) {
+									 	difference += 52429.500;
+									 }
                             output = QString::number(difference) + "\n";
                             stream << output;
                             qDebug() << "difference: " << QString::number(difference);
@@ -896,4 +911,26 @@ void MainWindow::on_file_name_pushButton_clicked()
                                 QStandardPaths::locate(QStandardPaths::DocumentsLocation, QString(), QStandardPaths::LocateDirectory)
                                 );
 	 ui->file_name_lineEdit->setText(newDataFileName == "" ? dataFileName : newDataFileName);
+}
+
+void MainWindow::on_pulse_pushButton_clicked()
+{
+    CAENVME_StartPulser(handleChef, cvPulserA);
+}
+
+void MainWindow::on_read_scalaer_value_pushButton_clicked()
+{
+    baseAddressScaler = ui->spinBox_rotary_switches_scaler->value() << 16;
+
+    uint32_t value32 = 0;
+    CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x10, &value32, cvA32_U_DATA, cvD32);
+    ui->scaler_value_spinBox->setValue(value32);
+}
+
+void MainWindow::on_reset_scaler_pushButton_clicked()
+{
+    baseAddressScaler = ui->spinBox_rotary_switches_scaler->value() << 16;
+
+    uint16_t value16 = 0;
+    CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x50, &value16, cvA32_U_DATA, cvD16);
 }
