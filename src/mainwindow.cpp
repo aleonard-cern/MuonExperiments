@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <CAENVMElib.h>
 #include <iostream>
+#include <chrono>
 
 
 
@@ -167,6 +168,14 @@ MainWindow::MainWindow(QWidget *parent) :
         lcdNumber_currents[i]->setPalette(Qt::red);
     }
 
+    ui->scaler_ch0_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch1_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch2_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch3_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch4_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch5_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch6_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch7_lcdNumber->setPalette(Qt::black);
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(readHV()));
@@ -205,6 +214,26 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
+    maxOfEntriesPoisson = 1;
+    nBinsPoisson = 100;
+    cMin = ui->doubleSpinBox_cmin->value();
+    cMax = ui->doubleSpinBox_cmax->value();
+    nBins = ui->spinBox_nbins->value();
+    for (int i=0; i<nBinsPoisson; ++i)
+    {
+      xPoisson.push_back( cMin + i * cMax / nBinsPoisson + 0.5 * (cMax - cMin) / nBinsPoisson );
+      yPoisson.push_back(0);
+    }
+
+    poissonDistr = new QCPBars(ui->poisson_widgets->xAxis, ui->poisson_widgets->yAxis);
+    ui->poisson_widgets->addPlottable(poissonDistr);
+    poissonDistr->setWidth(5.0/xPoisson.size());
+    poissonDistr->setData(xPoisson, yPoisson);
+    ui->poisson_widgets->rescaleAxes();
+    ui->poisson_widgets->xAxis->setLabel("Count");
+    ui->poisson_widgets->yAxis->setLabel("# entries");
+    ui->poisson_widgets->xAxis->setRange(cMin*0.99, cMax*1.01);
+    ui->poisson_widgets->yAxis->setRange(0, 10);
 
     ui->total_lcdNumber->display(0);
     ui->rate_lcdNumber->display(0);
@@ -339,7 +368,7 @@ void MainWindow::readHV()
         lcdNumber_currents[i]->display(value16*0.05);
         CAENVME_ReadCycle(handleChef, baseAddressHV + 0x80 * i + 0x94, &value16, cvA32_U_DATA, cvD16);
         label_state_leds[i]->setPixmap(value16 & (0x1 << 0) ? QPixmap(":/green.png") : QPixmap(":/lightgreen.png"));
-        hvOn = hvOn || value16;
+        hvOn = hvOn || (value16 & (0x1 << 0));
         label_ramp_up_leds[i]->setPixmap(value16 & (0x1 << 1) ? QPixmap(":/orange.png") : QPixmap(":/lightorange.png"));
         label_ramp_down_leds[i]->setPixmap(value16 & (0x1 << 2) ? QPixmap(":/orange.png") : QPixmap(":/lightorange.png"));
         label_over_current_leds[i]->setPixmap(value16 & (0x1 << 3) ? QPixmap(":/red.png") : QPixmap(":/lightred.png"));
@@ -450,6 +479,9 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 {
     //qDebug() << QString::number(index);
     if (index == 1) {
+        timer->stop();
+    }
+    else if (index == 2) {
         timer->stop();
     }
     else if (index == 0) {
@@ -915,16 +947,88 @@ void MainWindow::on_file_name_pushButton_clicked()
 
 void MainWindow::on_pulse_pushButton_clicked()
 {
+    unsigned char period;
+    double truePeriod = 0; // in ms
+    unsigned char width;
+    double trueWidth = 0; // in ms
+    CVTimeUnits unit;
+    unsigned char pulseNo;
+    CVIOSources start, reset;
+    CAENVME_GetPulserConf(handleChef, cvPulserA, &period, &width, &unit, &pulseNo, &start, &reset);
+
+    switch (unit) {
+        case cvUnit25ns:
+            truePeriod = (int)(period) * 0.000025;
+            trueWidth = (int)(width) * 0.000025;
+            break;
+        case cvUnit104ms:
+            truePeriod = (int)(period) * 104;
+            trueWidth = (int)(width) * 104;
+            break;
+        case cvUnit410us:
+            truePeriod = (int)(period) * 0.41;
+            trueWidth = (int)(width) * 0.41;
+            break;
+        case cvUnit1600ns:
+            truePeriod = (int)(period) * 0.0016;
+            trueWidth = (int)(width) * 0.0016;
+            break;
+    }
+
+    qDebug() << "Period: " << truePeriod << " ms";
+    qDebug() << "Width: " << trueWidth << " ms";
+
     CAENVME_StartPulser(handleChef, cvPulserA);
+
+
+    long now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+    long t = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+
+    while (t < now + truePeriod) {
+
+        t = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count() ;
+        ui->pulse_progressBar->setValue((int)(100*(t-now)/(truePeriod)));
+        QCoreApplication::processEvents();
+
+    }
+    ui->pulse_progressBar->setValue(100);
+
+
 }
 
 void MainWindow::on_read_scalaer_value_pushButton_clicked()
 {
     baseAddressScaler = ui->spinBox_rotary_switches_scaler->value() << 16;
 
-    uint32_t value32 = 0;
-    CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x10, &value32, cvA32_U_DATA, cvD32);
-    ui->scaler_value_spinBox->setValue(value32);
+    //uint32_t value32 = 0;
+    //CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x10, &value32, cvA32_U_DATA, cvD32);
+    //ui->scaler_ch0_lcdNumber->display((int)value32);
+    //CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x14, &value32, cvA32_U_DATA, cvD32);
+    //ui->scaler_ch1_lcdNumber->display((int)value32);
+
+    unsigned char values[32];
+    int sizeOut = 0;
+    CAENVME_BLTReadCycle(handleChef, baseAddressScaler + 0x10, values, 32, cvA32_U_DATA, cvD32, &sizeOut);
+
+
+    int * ch = (int*) values;
+    ui->scaler_ch0_lcdNumber->display(*ch);
+    ch = (int*) (values + 4);
+    ui->scaler_ch1_lcdNumber->display(*ch);
+    ch = (int*) (values + 8);
+    ui->scaler_ch2_lcdNumber->display(*ch);
+    ch = (int*) (values + 12);
+    ui->scaler_ch3_lcdNumber->display(*ch);
+    ch = (int*) (values + 16);
+    ui->scaler_ch4_lcdNumber->display(*ch);
+    ch = (int*) (values + 20);
+    ui->scaler_ch5_lcdNumber->display(*ch);
+    ch = (int*) (values + 24);
+    ui->scaler_ch6_lcdNumber->display(*ch);
+    ch = (int*) (values + 28);
+    ui->scaler_ch7_lcdNumber->display(*ch);
+
+
 }
 
 void MainWindow::on_reset_scaler_pushButton_clicked()
@@ -933,4 +1037,13 @@ void MainWindow::on_reset_scaler_pushButton_clicked()
 
     uint16_t value16 = 0;
     CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x50, &value16, cvA32_U_DATA, cvD16);
+}
+
+void MainWindow::on_poisson_pushButton_clicked()
+{
+    int nExp = 100;
+    for (int i = 0; i < nExp; i++) {
+
+    }
+
 }

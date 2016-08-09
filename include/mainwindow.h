@@ -104,10 +104,11 @@ private:
     QLabel* label_interlock_leds[6];
 
     QVector<double> x, y;
-    QCPBars *bars;
-    int maxOfEntries;
-    int nBins;
-    double tMin, tMax;
+    QVector<double> xPoisson, yPoisson;
+    QCPBars *bars, *poissonDistr;
+    int maxOfEntries, maxOfEntriesPoisson;
+    int nBins, nBinsPoisson;
+    double tMin, tMax, cMin, cMax;
 
 
     int tdcStartCh;
