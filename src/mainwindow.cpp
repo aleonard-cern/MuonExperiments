@@ -176,6 +176,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->scaler_ch5_lcdNumber->setPalette(Qt::black);
     ui->scaler_ch6_lcdNumber->setPalette(Qt::black);
     ui->scaler_ch7_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch8_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch9_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch10_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch11_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch12_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch13_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch14_lcdNumber->setPalette(Qt::black);
+    ui->scaler_ch15_lcdNumber->setPalette(Qt::black);
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(readHV()));
@@ -265,7 +273,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget->setCurrentIndex(0);
 
     this->setFixedSize(this->size());
-
+    on_reset_scaler_pushButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -304,7 +312,7 @@ bool MainWindow::readTDCParameters(int baseAddress)
     CVErrorCodes ret = CAENVME_ReadCycle(handleChef, baseAddressTDC + 0x1026, &value16, cvA32_U_DATA, cvD16);
     if (ret != cvSuccess) {
         qDebug() << "Please check the rotary switches for the tdc.";
-        QMessageBox::information(this, "Error", "Please check the rotary switches for the tdcs.");
+        QMessageBox::information(this, "Error", "Please check the rotary switches for the TDC.");
         return false;
     }
     return true;
@@ -314,7 +322,7 @@ bool MainWindow::readTDCParameters(int baseAddress)
 
 void MainWindow::setPulserMode()
 {
-    CAENVME_SetPulserConf(handleChef, cvPulserA, 101, 100, cvUnit104ms, 1, cvManualSW, cvManualSW);
+    CAENVME_SetPulserConf(handleChef, cvPulserA, 3, 2, cvUnit104ms, 1, cvManualSW, cvManualSW);
     CAENVME_SetOutputConf(handleChef, cvOutput0, cvInverted, cvActiveLow, cvMiscSignals);
 }
 
@@ -717,6 +725,20 @@ void MainWindow::updatePlot(double value)
     ui->widget_qcp->replot();
 }
 
+
+void MainWindow::updatePoissonPlot(double value)
+{
+    int index = (value - cMin) * nBinsPoisson / (cMax - cMin);
+    if (index >= nBinsPoisson || index < 0) return;
+
+    yPoisson[index]++;
+    if (yPoisson[index] > maxOfEntriesPoisson) maxOfEntriesPoisson = yPoisson[index];
+    poissonDistr->clearData();
+    poissonDistr->setData(xPoisson, yPoisson);
+    ui->poisson_widgets->yAxis->setRange(0, 10 + 1.3*maxOfEntriesPoisson);
+    ui->poisson_widgets->replot();
+}
+
 void MainWindow::on_pushButton_stop_run_clicked()
 {
     if (running) stopRun = true;
@@ -947,6 +969,7 @@ void MainWindow::on_file_name_pushButton_clicked()
 
 void MainWindow::on_pulse_pushButton_clicked()
 {
+    ui->pulse_pushButton->setEnabled(false);
     unsigned char period;
     double truePeriod = 0; // in ms
     unsigned char width;
@@ -988,10 +1011,12 @@ void MainWindow::on_pulse_pushButton_clicked()
 
         t = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count() ;
         ui->pulse_progressBar->setValue((int)(100*(t-now)/(truePeriod)));
+        on_read_scalaer_value_pushButton_clicked();
         QCoreApplication::processEvents();
 
     }
     ui->pulse_progressBar->setValue(100);
+    ui->pulse_pushButton->setEnabled(true);
 
 
 }
@@ -1006,9 +1031,9 @@ void MainWindow::on_read_scalaer_value_pushButton_clicked()
     //CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x14, &value32, cvA32_U_DATA, cvD32);
     //ui->scaler_ch1_lcdNumber->display((int)value32);
 
-    unsigned char values[32];
+    unsigned char values[64];
     int sizeOut = 0;
-    CAENVME_BLTReadCycle(handleChef, baseAddressScaler + 0x10, values, 32, cvA32_U_DATA, cvD32, &sizeOut);
+    CAENVME_BLTReadCycle(handleChef, baseAddressScaler + 0x10, values, 64, cvA32_U_DATA, cvD32, &sizeOut);
 
 
     int * ch = (int*) values;
@@ -1027,7 +1052,22 @@ void MainWindow::on_read_scalaer_value_pushButton_clicked()
     ui->scaler_ch6_lcdNumber->display(*ch);
     ch = (int*) (values + 28);
     ui->scaler_ch7_lcdNumber->display(*ch);
-
+    ch = (int*) (values + 32);
+    ui->scaler_ch8_lcdNumber->display(*ch);
+    ch = (int*) (values + 36);
+    ui->scaler_ch9_lcdNumber->display(*ch);
+    ch = (int*) (values + 40);
+    ui->scaler_ch10_lcdNumber->display(*ch);
+    ch = (int*) (values + 44);
+    ui->scaler_ch11_lcdNumber->display(*ch);
+    ch = (int*) (values + 48);
+    ui->scaler_ch12_lcdNumber->display(*ch);
+    ch = (int*) (values + 52);
+    ui->scaler_ch13_lcdNumber->display(*ch);
+    ch = (int*) (values + 56);
+    ui->scaler_ch14_lcdNumber->display(*ch);
+    ch = (int*) (values + 60);
+    ui->scaler_ch15_lcdNumber->display(*ch);
 
 }
 
@@ -1037,13 +1077,78 @@ void MainWindow::on_reset_scaler_pushButton_clicked()
 
     uint16_t value16 = 0;
     CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x50, &value16, cvA32_U_DATA, cvD16);
+
+    on_read_scalaer_value_pushButton_clicked();
+
+    ui->pulse_progressBar->setValue(0);
+
 }
 
 void MainWindow::on_poisson_pushButton_clicked()
 {
-    int nExp = 100;
+    int nExp = 10000;
+
+
+    unsigned char period;
+    double truePeriod = 0; // in ms
+    unsigned char width;
+    double trueWidth = 0; // in ms
+    CVTimeUnits unit;
+    unsigned char pulseNo;
+    CVIOSources start, reset;
+    CAENVME_GetPulserConf(handleChef, cvPulserA, &period, &width, &unit, &pulseNo, &start, &reset);
+
+    switch (unit) {
+        case cvUnit25ns:
+            truePeriod = (int)(period) * 0.000025;
+            trueWidth = (int)(width) * 0.000025;
+            break;
+        case cvUnit104ms:
+            truePeriod = (int)(period) * 104;
+            trueWidth = (int)(width) * 104;
+            break;
+        case cvUnit410us:
+            truePeriod = (int)(period) * 0.41;
+            trueWidth = (int)(width) * 0.41;
+            break;
+        case cvUnit1600ns:
+            truePeriod = (int)(period) * 0.0016;
+            trueWidth = (int)(width) * 0.0016;
+            break;
+    }
+    baseAddressScaler = ui->spinBox_rotary_switches_scaler->value() << 16;
+
     for (int i = 0; i < nExp; i++) {
+        ui->pulse_progressBar->setValue((int)(100*i*1.0/nExp));
+        uint16_t value16 = 0;
+        CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x50, &value16, cvA32_U_DATA, cvD16);
+
+        usleep(200000);
+        CAENVME_StartPulser(handleChef, cvPulserA);
+
+        long now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+        long t = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+
+        qDebug() << "Starting while loop ... ";
+        while (t < now + truePeriod) {
+
+            t = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count() ;
+            QCoreApplication::processEvents();
+        }
+
+        qDebug() << "Waiting loop finished";
+        uint32_t value32 = 0;
+        CAENVME_ReadCycle(handleChef, baseAddressScaler + 0x10, &value32, cvA32_U_DATA, cvD32);
+        qDebug() << "Finishing reading: " << value32;
+
+        ui->scaler_ch0_lcdNumber->display((int)value32);
+
+        updatePoissonPlot((int)value32);
+
+
+
 
     }
+    ui->pulse_progressBar->setValue(100);
 
 }

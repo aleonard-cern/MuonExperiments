@@ -44,6 +44,8 @@ private slots:
     void adjustPlot();
 
     void updatePlot(double value);
+    void updatePoissonPlot(double value);
+
 
     void on_spinBox_nbins_valueChanged(int arg1);
 
@@ -72,6 +74,8 @@ private slots:
     void on_read_scalaer_value_pushButton_clicked();
 
     void on_reset_scaler_pushButton_clicked();
+
+    void on_poisson_pushButton_clicked();
 
 private:
     bool isLog;
