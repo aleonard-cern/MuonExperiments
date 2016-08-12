@@ -32,12 +32,14 @@ TEMPLATE = app
 
 SOURCES += src/main.cpp\
         src/mainwindow.cpp \
-    src/qcustomplot.cpp
+    src/qcustomplot.cpp \
+    src/histogram.cpp
 
 INCLUDEPATH += include
 
 HEADERS  += include/mainwindow.h \
-    include/qcustomplot.h
+    include/qcustomplot.h \
+    include/histogram.h
 
 FORMS    += ui/mainwindow.ui
 

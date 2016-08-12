@@ -6,8 +6,9 @@
 #include <QLCDNumber>
 #include <QLabel>
 #include <qcustomplot.h>
-
 #include <unistd.h>
+
+#include "histogram.h"
 
 
 namespace Ui {
@@ -41,10 +42,10 @@ private slots:
 
     void on_pushButton_start_run_clicked();
 
-    void adjustPlot();
+    //void adjustPlot();
 
-    void updatePlot(double value);
-    void updatePoissonPlot(double value);
+    //void updatePlot(double value);
+    //void updatePoissonPlot(double value);
 
 
     void on_spinBox_nbins_valueChanged(int arg1);
@@ -77,6 +78,14 @@ private slots:
 
     void on_poisson_pushButton_clicked();
 
+    void on_doubleSpinBox_cmin_valueChanged(double cMin_);
+
+    void on_doubleSpinBox_cmax_valueChanged(double cMax_);
+
+    void on_spinBox_nbins_poisson_valueChanged(int nBins_);
+
+    void on_spinBox_nevents_poissons_valueChanged(int nevents_);
+
 private:
     bool isLog;
     Ui::MainWindow *ui;
@@ -87,7 +96,7 @@ private:
     uint32_t baseAddressScaler;
     bool HVenabled;
 
-    std::vector<double> bins;
+    //std::vector<double> bins;
 
 
     int VMAX;
@@ -107,12 +116,12 @@ private:
     QLabel* label_disabled_leds[6];
     QLabel* label_interlock_leds[6];
 
-    QVector<double> x, y;
-    QVector<double> xPoisson, yPoisson;
-    QCPBars *bars, *poissonDistr;
-    int maxOfEntries, maxOfEntriesPoisson;
-    int nBins, nBinsPoisson;
-    double tMin, tMax, cMin, cMax;
+    //QVector<double> x, y;
+    //QVector<double> xPoisson, yPoisson;
+    //QCPBars *bars, *poissonDistr;
+    //int maxOfEntries, maxOfEntriesPoisson;
+    //int nBins, nBinsPoisson;
+    //double tMin, tMax, cMin, cMax;
 
 
     int tdcStartCh;
@@ -137,6 +146,10 @@ private:
 
     bool tdcTriggerSettingIsGood;
     QString dataFileName;
+
+    histogram* hPoisson;
+    histogram* hTDC;
+    int nExp;
 
 };
 

@@ -193,6 +193,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // configure TDC plots
 
+    /*
     maxOfEntries = 1;
     tMin = ui->doubleSpinBox_tmin->value();
     tMax = ui->doubleSpinBox_tmax->value();
@@ -216,12 +217,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->widget_qcp->yAxis->setLabel("# entries");
     ui->widget_qcp->xAxis->setRange(tMin*0.99, tMax*1.01);
     ui->widget_qcp->yAxis->setRange(0, 10);
+    */
     isLog = false;
     stopRun = false;
     running = false;
 
 
-
+    /*
     maxOfEntriesPoisson = 1;
     nBinsPoisson = 100;
     cMin = ui->doubleSpinBox_cmin->value();
@@ -242,6 +244,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->poisson_widgets->yAxis->setLabel("# entries");
     ui->poisson_widgets->xAxis->setRange(cMin*0.99, cMax*1.01);
     ui->poisson_widgets->yAxis->setRange(0, 10);
+    */
 
     ui->total_lcdNumber->display(0);
     ui->rate_lcdNumber->display(0);
@@ -274,6 +277,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->setFixedSize(this->size());
     on_reset_scaler_pushButton_clicked();
+
+
+    hPoisson = new histogram(ui->qcp_Poisson, "Poisson Distribution", "count", "# events");
+    hPoisson->adjustPlot(ui->spinBox_nbins_poisson->value(), ui->doubleSpinBox_cmin->value(), ui->doubleSpinBox_cmax->value());
+    nExp = 100;
+
+    hTDC = new histogram(ui->qcp_TDC, "TDC Delta t", "time (ns)", "# events");
+    hTDC->adjustPlot(ui->spinBox_nbins->value(), ui->doubleSpinBox_tmin->value(), ui->doubleSpinBox_tmax->value());
 }
 
 MainWindow::~MainWindow()
@@ -609,7 +620,7 @@ void MainWindow::on_pushButton_start_run_clicked()
                             stream << output;
                             qDebug() << "difference: " << QString::number(difference);
                             differences.push_back(difference);
-                            if (difference <= tMax && difference >= tMin) {
+                            if (difference <= hTDC->getXMax() && difference >= hTDC->getXMin()) {
                                 // total number of events
                                 counter++;
                                 ui->total_lcdNumber->display(counter);
@@ -642,7 +653,7 @@ void MainWindow::on_pushButton_start_run_clicked()
                                 ui->last_lifetime_lcdNumber->display((int)(difference)/1000.0);
 
                                 // plot
-                                updatePlot(difference);
+                                hTDC->updatePlot(difference);
                                 prevTime = currentTime;
                             }
                         }
@@ -671,32 +682,46 @@ void MainWindow::on_pushButton_start_run_clicked()
     }
 }
 
-void MainWindow::on_spinBox_nbins_valueChanged(int arg1)
+void MainWindow::on_spinBox_nbins_valueChanged(int nBins_)
 {
-    nBins = arg1;
-    x.clear();
-    y.clear();
-    for (int i=0; i<nBins; ++i) {
-        x.push_back(0);
-        y.push_back(0);
-    }
-    adjustPlot();
+    hTDC->adjustPlot(nBins_, ui->doubleSpinBox_tmin->value(), ui->doubleSpinBox_tmax->value());
 }
 
-void MainWindow::on_doubleSpinBox_tmax_valueChanged(double arg1)
+void MainWindow::on_doubleSpinBox_tmax_valueChanged(double tMax_)
 {
-    if (arg1 <= tMin) return;
-    tMax = arg1;
-    adjustPlot();
+    double tMin_ = ui->doubleSpinBox_tmin->value();
+    if (tMax_ <= tMin_) return;
+    hTDC->adjustPlot(ui->spinBox_nbins->value(), tMin_, tMax_);
 }
 
-void MainWindow::on_doubleSpinBox_tmin_valueChanged(double arg1)
+void MainWindow::on_doubleSpinBox_tmin_valueChanged(double tMin_)
 {
-    if (arg1 >= tMax) return;
-    tMin = arg1;
-    adjustPlot();
+    double tMax_ = ui->doubleSpinBox_tmax->value();
+    if (tMin_ >= tMax_) return;
+    hTDC->adjustPlot(ui->spinBox_nbins->value(), tMin_, tMax_);
 }
 
+void MainWindow::on_spinBox_nbins_poisson_valueChanged(int nBins_)
+{
+    hPoisson->adjustPlot(nBins_, ui->doubleSpinBox_cmin->value(), ui->doubleSpinBox_cmax->value());
+}
+
+void MainWindow::on_doubleSpinBox_cmax_valueChanged(double cMax_)
+{
+    double cMin_ = ui->doubleSpinBox_cmin->value();
+    if (cMax_ <= cMin_) return;
+    hPoisson->adjustPlot(ui->spinBox_nbins_poisson->value(), cMin_, cMax_);
+}
+
+void MainWindow::on_doubleSpinBox_cmin_valueChanged(double cMin_)
+{
+    double cMax_ = ui->doubleSpinBox_cmax->value();
+    if (cMin_ >= cMax_) return;
+    hPoisson->adjustPlot(ui->spinBox_nbins_poisson->value(), cMin_, cMax_);
+}
+
+
+/*
 void MainWindow::adjustPlot()
 {
     for (int i=0; i<nBins; ++i) {
@@ -738,7 +763,7 @@ void MainWindow::updatePoissonPlot(double value)
     ui->poisson_widgets->yAxis->setRange(0, 10 + 1.3*maxOfEntriesPoisson);
     ui->poisson_widgets->replot();
 }
-
+*/
 void MainWindow::on_pushButton_stop_run_clicked()
 {
     if (running) stopRun = true;
@@ -767,7 +792,7 @@ void MainWindow::on_pushButton_clear_bars_clicked()
         mean_lifetime = 0;
         mean_lifetime_square = 0;
 
-        adjustPlot();
+        hTDC->adjustPlot(ui->spinBox_nbins->value(), ui->doubleSpinBox_tmin->value(), ui->doubleSpinBox_tmax->value());
     }
     else {
         qDebug() << "Yes was *not* clicked";
@@ -943,17 +968,14 @@ void MainWindow::on_pushButton_clear_tdc_clicked()
 
 void MainWindow::on_log_pushButton_clicked()
 {
-    if (!isLog) {
-        ui->widget_qcp->yAxis->setScaleType(QCPAxis::stLogarithmic);
-        isLog = true;
+    bool isLogY = hTDC->setLogY();
+
+    if (isLogY) {
         ui->log_pushButton->setText("Linear Scale");
     }
     else {
-        ui->widget_qcp->yAxis->setScaleType(QCPAxis::stLinear);
-        isLog = false;
         ui->log_pushButton->setText("Log Scale");
     }
-    ui->widget_qcp->replot();
 }
 
 
@@ -1086,7 +1108,6 @@ void MainWindow::on_reset_scaler_pushButton_clicked()
 
 void MainWindow::on_poisson_pushButton_clicked()
 {
-    int nExp = 10000;
 
 
     unsigned char period;
@@ -1143,7 +1164,7 @@ void MainWindow::on_poisson_pushButton_clicked()
 
         ui->scaler_ch0_lcdNumber->display((int)value32);
 
-        updatePoissonPlot((int)value32);
+        hPoisson->updatePlot((int)value32);
 
 
 
@@ -1151,4 +1172,13 @@ void MainWindow::on_poisson_pushButton_clicked()
     }
     ui->pulse_progressBar->setValue(100);
 
+}
+
+
+
+
+
+void MainWindow::on_spinBox_nevents_poissons_valueChanged(int nevents_)
+{
+    nExp = nevents_;
 }
